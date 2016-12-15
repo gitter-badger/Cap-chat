@@ -20,6 +20,7 @@ private:
     char _sendData[255];
 
     sf::TcpListener listenerSocket;
+    sf::TcpListener listenerSocket2;
 };
 
 

@@ -37,8 +37,8 @@ bool NetworkService::startConnection(std::string ip, unsigned int port, sf::Time
         std::cout << "listening" << std::endl;
         if (listenerSocket.listen(port) == sf::Socket::Done)
             if (listenerSocket.accept(tcpSocketReciver) == sf::Socket::Done)
-                if (listenerSocket.listen(port+1) == sf::Socket::Done)
-                    if (listenerSocket.accept(tcpSocket) == sf::Socket::Done) {
+                if (listenerSocket2.listen(port+1) == sf::Socket::Done)
+                    if (listenerSocket2.accept(tcpSocket) == sf::Socket::Done) {
                         std::cout << "Connected to" << tcpSocket.getRemoteAddress().toString() << std::endl;
                         return true;
                     } else
