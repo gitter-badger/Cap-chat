@@ -60,6 +60,7 @@ ICommand *CmdInputHandler::handleInput() { // TODO use ICommand pattern here
         }
     } else if (chatState == ChatState::Chat) {
         std::cout<<"chat mode"<<std::endl;
+        networkService.update();
         std::atomic_bool a;
         a = false;
         std::thread updateThread([&]() {

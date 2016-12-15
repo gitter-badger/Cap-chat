@@ -9,6 +9,10 @@
 NetworkService::NetworkService() {
     // listenerSocket.setBlocking(false);
     // tcpSocket.setBlocking(false);
+    if(listenerSocket.isBlocking())
+        std::cout<<"listener blocking"<<std::endl;
+    if(tcpSocket.isBlocking())
+        std::cout<<"tcp blocking"<<std::endl;
 }
 
 void NetworkService::update() {
@@ -19,7 +23,6 @@ void NetworkService::update() {
             std::cout<<"got data"<<std::endl;
             std::cout << data << std::endl;
         }
-std::cout<<"listener fail"<<std::endl;
 }
 
 bool
