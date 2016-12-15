@@ -71,6 +71,7 @@ ICommand *CmdInputHandler::handleInput() { // TODO use ICommand pattern here
         std::cin>> message;
         std::cout << message << std::endl;
         a = true;
+        std::cout<<"joining thread"<<std::endl;
         if (updateThread.joinable())
             updateThread.join();
         std::cout << "returning"<<std::endl;
@@ -90,7 +91,7 @@ CmdInputHandler::~CmdInputHandler() {
 }
 
 void CmdInputHandler::updateChat(std::atomic_bool &ifShouldEnd) {
-    while (!ifShouldEnd)
+    if (!ifShouldEnd)
         networkService.update();
 
 }
