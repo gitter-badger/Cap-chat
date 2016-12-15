@@ -51,7 +51,7 @@ ICommand *CmdInputHandler::handleInput() { // TODO use ICommand pattern here
             std::cin >> ip;
             if (ip == "listen")
                 ip = "";
-            if (networkService.startConnection(ip)==sf::Socket::Done) {
+            if (networkService.startConnection(ip)) {
                 chatState = ChatState::Chat;
                 std::cout << "Cap-chat start typing your msg" << std::endl;
             }

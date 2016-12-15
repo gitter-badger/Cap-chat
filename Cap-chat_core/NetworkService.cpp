@@ -25,8 +25,7 @@ void NetworkService::update() {
         }
 }
 
-bool
-NetworkService::startConnection(std::string ip, unsigned int port, sf::Time timeout) {
+bool NetworkService::startConnection(std::string ip, unsigned int port, sf::Time timeout) {
     if (ip != "") {
         if (tcpSocket.connect(sf::IpAddress(ip), port, timeout) == sf::Socket::Done) {
             std::cout << "Connected to" << ip << std::endl;
