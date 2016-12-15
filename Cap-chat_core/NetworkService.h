@@ -15,6 +15,7 @@ public:
 private:
 
     sf::TcpSocket tcpSocket;
+    sf::TcpSocket tcpSocketReciver;
 
     char _sendData[255];
 
