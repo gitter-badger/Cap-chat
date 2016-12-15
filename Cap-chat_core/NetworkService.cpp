@@ -19,6 +19,7 @@ void NetworkService::update() {
             std::cout<<"got data"<<std::endl;
             std::cout << data << std::endl;
         }
+std::cout<<"listener fail"<<std::endl;
 }
 
 bool
@@ -47,7 +48,7 @@ bool NetworkService::sendData(char *sendData) {
     if (tcpSocket.send(_sendData, 255) == sf::Socket::Done) {
         std::cout<<"sending"<<std::endl;
         return true;
-    }
+    }std::cout<<"sender fail"<<std::endl;
     return false;
 }
 

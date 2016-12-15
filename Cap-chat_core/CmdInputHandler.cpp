@@ -51,7 +51,7 @@ ICommand *CmdInputHandler::handleInput() { // TODO use ICommand pattern here
             std::cin >> ip;
             if (ip == "listen")
                 ip = "";
-            if (networkService.startConnection(ip)) {
+            if (networkService.startConnection(ip)==sf::Socket::Done) {
                 chatState = ChatState::Chat;
                 std::cout << "Cap-chat start typing your msg" << std::endl;
             }
@@ -59,11 +59,13 @@ ICommand *CmdInputHandler::handleInput() { // TODO use ICommand pattern here
 
         }
     } else if (chatState == ChatState::Chat) {
-        networkService.update();
+        std::cout<<"chat mode"<<std::endl;
         std::atomic_bool a;
         a = false;
         std::thread updateThread([&]() {
+            std::cout<<"thread start"<<std::endl;
             updateChat(a);
+            std::cout<<"thread end"<<std::endl;
         });
         std::string message;
         std::getline(std::cin, message);
@@ -71,6 +73,7 @@ ICommand *CmdInputHandler::handleInput() { // TODO use ICommand pattern here
         a = true;
         if (updateThread.joinable())
             updateThread.join();
+        std::cout << "returning"<<std::endl;
         return (ICommand *) (new SendMessageCommand(message, &networkService));
     }
 
