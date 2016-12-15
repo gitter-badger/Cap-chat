@@ -68,7 +68,7 @@ ICommand *CmdInputHandler::handleInput() { // TODO use ICommand pattern here
             std::cout<<"thread end"<<std::endl;
         });
         std::string message;
-        std::getline(std::cin, message);
+        std::cin>> message;
         std::cout << message << std::endl;
         a = true;
         if (updateThread.joinable())
